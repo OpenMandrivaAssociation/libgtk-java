@@ -1,6 +1,6 @@
 Name:           libgtk-java
 Version:        2.10.2
-Release:        %mkrel 3
+Release:        %mkrel 4
 Epoch:          0
 Summary:        Java bindings for GTK+
 License:        LGPL
@@ -16,7 +16,7 @@ BuildRequires:  docbook-utils
 BuildRequires:  docbook-dtd31-sgml
 BuildRequires:  glib-java-devel >= 0:0.4.2
 BuildRequires:  java-devel >= 0:1.4.2
-BuildRequires:  jpackage-utils
+BuildRequires:  java-rpmbuild
 BuildRequires:  libgtk+2.0-devel
 BuildRequires:  java-gcj-compat-devel
 
