@@ -10,6 +10,7 @@ Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgtk-java/2.10/
 Source1:        libgtk-java-2.10.2.md5sum
 Source2:        libgtk-java-2.10.2.news
 Source3:        java-gnome-macros.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-root
 BuildRequires:  cairo-java-devel >= 0:1.0.8
 BuildRequires:  docbook-utils
 BuildRequires:  docbook-dtd31-sgml
