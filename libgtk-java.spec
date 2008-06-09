@@ -77,9 +77,13 @@ pushd %{buildroot}%{_javadir}
 %{__ln_s} $jarname$jarversion-src-%{version}.zip $jarname$jarversion-src.zip
 popd
 
+%if %mdkversion < 200900
 %post -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -p /sbin/ldconfig
+%endif
 
 %clean
 %{__rm} -rf %{buildroot}
