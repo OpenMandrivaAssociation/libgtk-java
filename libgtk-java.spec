@@ -1,6 +1,8 @@
+%define _disable_ld_no_undefined 1
+
 Name:           libgtk-java
 Version:        2.10.2
-Release:        %mkrel 8
+Release:        %mkrel 8.0.1
 Epoch:          0
 Summary:        Java bindings for GTK+
 License:        LGPLv2
@@ -45,6 +47,7 @@ Development files for %{name}.
 export CLASSPATH=
 export JAVA=%{java}
 export JAVAC=%{javac}
+export JAVAH=%{_jvmdir}/java-rpmbuild/bin/javah
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
 export GCJ=%{gcj}
