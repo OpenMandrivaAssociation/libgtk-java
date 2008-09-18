@@ -51,6 +51,7 @@ export JAVAH=%{_jvmdir}/java-rpmbuild/bin/javah
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
 export GCJ=%{gcj}
+export JAVAFLAGS=-Xmx512m
 export CPPFLAGS="-I%{java_home}/include -I%{java_home}/include/linux"
 %{configure2_5x} --with-jardir=%{_javadir}
 %{make}
