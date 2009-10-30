@@ -68,11 +68,6 @@ popd
 %{__rm} -rf %{buildroot}
 %{makeinstall_std}
 
-%{__mkdir_p} %{buildroot}%{_datadir}/%{name}/macros
-%{__mv} %{buildroot}/%{name}/macros/*.m4 %{buildroot}%{_datadir}/%{name}/macros
-%{__rm} -rf %{buildroot}/%{name}
-%{__rm} -rf %{buildroot}/%{name}-%{version}
-
 # install the src.zip and make a sym link
 jarversion=$(echo -n %{version} | cut -d . -f -2)
 jarname=$(echo -n %{name} | cut -d - -f 1 | sed "s/lib//")
@@ -101,7 +96,7 @@ popd
 
 %files devel
 %defattr(-,root,root)
-%doc doc/api doc/examples
+%doc %{_datadir}/doc/%{name}-%version
 %{_javadir}/*.zip
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/macros
