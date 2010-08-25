@@ -3,7 +3,7 @@
 
 Name:           libgtk-java
 Version:        2.10.2
-Release:        %mkrel 8.0.3
+Release:        %mkrel 8.0.4
 Epoch:          0
 Summary:        Java bindings for GTK+
 License:        LGPLv2
