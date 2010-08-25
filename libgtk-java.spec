@@ -1,9 +1,8 @@
-%define _disable_ld_no_undefined 1
 %define Werror_cflags %nil
 
 Name:           libgtk-java
 Version:        2.10.2
-Release:        %mkrel 8.0.4
+Release:        %mkrel 8.0.5
 Epoch:          0
 Summary:        Java bindings for GTK+
 License:        LGPLv2
@@ -13,6 +12,7 @@ Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgtk-java/2.10/
 Source1:        libgtk-java-2.10.2.md5sum
 Source2:        libgtk-java-2.10.2.news
 Source3:        java-gnome-macros.tar.bz2
+Patch0:		libgtk-java-2.10.2-linkage.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-root
 BuildRequires:  cairo-java-devel >= 0:1.0.8
 BuildRequires:  docbook-utils
@@ -39,6 +39,7 @@ Development files for %{name}.
 %prep
 %setup -q
 %setup -q -T -D -a 3
+%patch0 -p0
 
 %build
 export CLASSPATH=
