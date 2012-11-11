@@ -1,0 +1,59 @@
+--- Makefile.am.link	2010-08-25 17:52:49.000000000 +0200
++++ Makefile.am	2010-08-25 17:54:41.000000000 +0200
+@@ -679,7 +679,8 @@
+ if BUILD_GCJ
+ libgtkjava_la_SOURCES = $(java_gtk_source_files)
+ libgtkjava_la_GCJFLAGS = -fjni -I$(srcdir)/src/java -Isrc/java --classpath=$(CLASSPATH):$(srcdir)/src/java
+-libgtkjava_la_LDFLAGS = $(JGJAVA_LIBS) -release $(gtkapiversion)
++libgtkjava_la_LDFLAGS = -release $(gtkapiversion)
++libgtkjava_la_LIBADD = $(JGJAVA_LIBS) $(CAIRO_JAVA_LIBS)
+ endif
+ 
+ libgtkjni_la_SOURCES = $(jni_gtk_source_files) src/jni/gtk_java.h src/jni/handleCallbackAction.h
+@@ -688,7 +689,8 @@
+ # unfortunatly, when automake can see an existing rule for the file --
+ # such as the above .h.lo: rule).
+ AM_CFLAGS = $(GTK_CFLAGS) $(CAIRO_CFLAGS) $(JGJAVA_CFLAGS) $(PLATFORM_CFLAGS) $(JNI_INCLUDES) -Isrc/jni
+-libgtkjni_la_LDFLAGS = $(GTHREAD_LIBS) $(GTK_LIBS) $(CAIRO_LIBS) $(JGJNI_LIBS) $(PLATFORM_LDFLAGS) -no-undefined -release $(gtkapiversion)
++libgtkjni_la_LDFLAGS = $(PLATFORM_LDFLAGS) -no-undefined -release $(gtkapiversion)
++libgtkjni_la_LIBADD = $(GTHREAD_LIBS) $(GTK_LIBS) $(CAIRO_LIBS) $(JGJNI_LIBS)
+ 
+ 
+ # automake should support generating versioned jars
+--- Makefile.in.link	2010-08-25 17:55:05.000000000 +0200
++++ Makefile.in	2010-08-25 17:57:34.000000000 +0200
+@@ -72,7 +72,6 @@
+ 	"$(DESTDIR)$(pkgconfigdir)"
+ libLTLIBRARIES_INSTALL = $(INSTALL)
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+-libgtkjava_la_LIBADD =
+ am__libgtkjava_la_SOURCES_DIST = src/java/org/gnu/atk/AtkObject.java \
+ 	src/java/org/gnu/atk/Hyperlink.java \
+ 	src/java/org/gnu/atk/Layer.java \
+@@ -1174,7 +1173,6 @@
+ @BUILD_GCJ_TRUE@am_libgtkjava_la_OBJECTS = $(am__objects_1)
+ libgtkjava_la_OBJECTS = $(am_libgtkjava_la_OBJECTS)
+ @BUILD_GCJ_TRUE@am_libgtkjava_la_rpath = -rpath $(libdir)
+-libgtkjni_la_LIBADD =
+ am__objects_2 = src/jni/gtk_java.lo src/jni/org_gnu_gdk_EventDND.lo \
+ 	src/jni/org_gnu_gdk_EventAny.lo src/jni/org_gnu_gdk_Pixmap.lo \
+ 	src/jni/org_gnu_gtk_MenuItem.lo \
+@@ -2697,14 +2695,16 @@
+ 
+ @BUILD_GCJ_TRUE@libgtkjava_la_SOURCES = $(java_gtk_source_files)
+ @BUILD_GCJ_TRUE@libgtkjava_la_GCJFLAGS = -fjni -I$(srcdir)/src/java -Isrc/java --classpath=$(CLASSPATH):$(srcdir)/src/java
+-@BUILD_GCJ_TRUE@libgtkjava_la_LDFLAGS = $(JGJAVA_LIBS) -release $(gtkapiversion)
++@BUILD_GCJ_TRUE@libgtkjava_la_LDFLAGS = -release $(gtkapiversion)
++@BUILD_GCJ_TRUE@libgtkjava_la_LIBADD = $(JGJAVA_LIBS) $(CAIRO_JAVA_LIBS)
+ libgtkjni_la_SOURCES = $(jni_gtk_source_files) src/jni/gtk_java.h src/jni/handleCallbackAction.h
+ # Don't use libgladejni_la_CFLAGS here; it forces automake to generate
+ # an individual build rule for every file .lo file (except,
+ # unfortunatly, when automake can see an existing rule for the file --
+ # such as the above .h.lo: rule).
+ AM_CFLAGS = $(GTK_CFLAGS) $(CAIRO_CFLAGS) $(JGJAVA_CFLAGS) $(PLATFORM_CFLAGS) $(JNI_INCLUDES) -Isrc/jni
+-libgtkjni_la_LDFLAGS = $(GTHREAD_LIBS) $(GTK_LIBS) $(CAIRO_LIBS) $(JGJNI_LIBS) $(PLATFORM_LDFLAGS) -no-undefined -release $(gtkapiversion)
++libgtkjni_la_LDFLAGS = $(PLATFORM_LDFLAGS) -no-undefined -release $(gtkapiversion)
++libgtkjni_la_LIBADD = $(GTHREAD_LIBS) $(GTK_LIBS) $(CAIRO_LIBS) $(JGJNI_LIBS)
+ 
+ # automake should support generating versioned jars
+ gtk_jardir = $(jardir)
