@@ -7,7 +7,7 @@ Epoch:          0
 Summary:        Java bindings for GTK+
 License:        LGPLv2
 Group:          System/Libraries
-URL:            http://java-gnome.sourceforge.net/
+URL:            https://java-gnome.sourceforge.net/
 Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgtk-java/2.10/libgtk-java-%{version}.tar.bz2
 Source1:        libgtk-java-2.10.2.md5sum
 Source2:        libgtk-java-2.10.2.news
